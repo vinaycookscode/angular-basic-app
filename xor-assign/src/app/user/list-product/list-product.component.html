@@ -1,0 +1,40 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+  <div class="row">
+    <mat-card (click)="purchaseThisProduct(eachProduct)" class="user-info-mat-card hover-pointer"
+      *ngFor="let eachProduct of productList" style="margin: 10px;">
+      <mat-card-title style="color: #faa52f;">
+        <img [src]="eachProduct?.image" style="height: 100px;width: 167px;">
+      </mat-card-title>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item>
+            <mat-icon mat-list-icon class="name-hover">border_color</mat-icon>
+            <div mat-line><small>{{eachProduct?.name | titlecase}}</small></div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon class="name-hover">attach_money</mat-icon>
+            <div mat-line><small>Actual Price {{eachProduct?.actualPrice}}</small></div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon class="name-hover">attach_money</mat-icon>
+            <div mat-line><small>Selling in {{eachProduct?.sellPrice}}</small></div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon class="name-hover">brush</mat-icon>
+            <div mat-line><small [style]="{'color': eachProduct?.color}">Color {{eachProduct?.color |
+                titlecase}}</small>
+            </div>
+          </mat-list-item>
+          <mat-list-item>
+            <mat-icon mat-list-icon class="name-hover">height</mat-icon>
+            <div mat-line><small>Dimension?{{eachProduct?.dimension?.height}} *
+                {{eachProduct?.dimension?.width}}</small>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

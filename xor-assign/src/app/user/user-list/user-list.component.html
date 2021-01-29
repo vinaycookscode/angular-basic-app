@@ -1,0 +1,48 @@
+<app-nav-bar></app-nav-bar>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let eachUser of userInformation">
+      <mat-list>
+        <mat-list-item class="mat-item-background-color">
+          <mat-icon mat-list-icon class="name-hover">folder</mat-icon>
+          <div mat-line class="name-hover" (mouseenter)="onNameHover($event, eachUser)" (mouseout)="onNameOut()">{{eachUser?.name.toLocaleLowerCase() | titlecase}}</div>
+          <div mat-line> <small>Email : {{eachUser?.email}}</small> </div>
+          <div mat-line> <small>Status : <span [ngStyle]="{'color': eachUser?.isActive ? 'green' : 'red'}">{{eachUser?.isActive ? 'Active': 'In-Active'}}</span></small> </div>
+          <div mat-line class="name-hover" [ngStyle]="{color:  eachUser?.isActive ? 'blueviolet' : '#0000008c' }" (click)="deleteUser(eachUser)"> <small> Delete User </small> </div>
+          <div mat-line class="name-hover" style="color: blue;" (click)="editUser(eachUser)"> <small> Edit User </small> </div>
+          <div mat-line class="name-hover" style="color: greenyellow;" (click)="addMoreProduct()"> <small> Add More Product </small> </div>
+          <div mat-line class="name-hover" style="color: greenyellow;" (click)="myProducts(eachUser)">
+            <mat-icon mat-list-icon class="name-hover">shopping_cart</mat-icon><small></small> </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+  <mat-card *ngIf="isCardVisible" class="user-info-mat-card" [ngStyle]="cardPosition">
+    <mat-card-title style="color: #faa52f;">{{ currentSelectedUserInformation?.name.toLocaleLowerCase() | titlecase}}</mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>
+          <mat-icon mat-list-icon class="name-hover">accessibility</mat-icon>
+          <div mat-line><small>{{currentSelectedUserInformation?.gender | titlecase}}</small></div>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon mat-list-icon class="name-hover">email</mat-icon>
+          <div mat-line><small>{{currentSelectedUserInformation?.email}}</small></div>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon mat-list-icon class="name-hover">location_city</mat-icon>
+          <div mat-line><small>Lives in {{currentSelectedUserInformation?.address | titlecase}}</small></div>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon mat-list-icon class="name-hover">location_on</mat-icon>
+          <div mat-line><small>{{currentSelectedUserInformation?.city | titlecase}}</small></div>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon mat-list-icon class="name-hover">brush</mat-icon>
+          <div mat-line><small>{{currentSelectedUserInformation?.hobby | titlecase}}</small></div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>

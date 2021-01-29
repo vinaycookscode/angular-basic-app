@@ -1,0 +1,148 @@
+<app-nav-bar></app-nav-bar>
+<div class="container" style="position: absolute;top: 12%;">
+  <div class="row inner-register-div">
+    <div class="col-md-12 text-center">
+      <h1 style="color: rebeccapurple;">Register here</h1>
+    </div>
+    <div class="col-md-12">
+      <form style="width: 100%; margin-left: 30px;" [formGroup]="signupFormGroup">
+        <div class="row">
+          <img [src]="DEFAULT_PROFILE_PIC" alt="Profile Pic" class="default-profile-pic">
+        </div>
+        <div class="row">
+          <mat-form-field class="form-element signup-form-elements-width">
+            <mat-label>Enter your Name</mat-label>
+            <input matInput placeholder="abc@xyz.com" formControlName="name">
+            <mat-error *ngIf="signupFormGroup?.controls?.name?.dirty || signupFormGroup?.controls?.name?.touched">
+              <span *ngIf="signupFormGroup?.controls?.name?.errors?.required">
+                Must provide a<strong>&nbsp;name</strong>
+              </span><br>
+              <span *ngIf="signupFormGroup?.controls?.name?.errors?.minlength">
+                Name should contain atleast <strong>&nbsp;2</strong>
+              </span><br>
+              <span *ngIf="signupFormGroup?.controls?.name?.errors?.maxlength">
+                Name should contain <strong>&nbsp;max 50 characters</strong>
+              </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-radio-group aria-label="Select an option" formControlName="gender">
+            <mat-radio-button [value]="GENDER_TYPES?.MALE">Male</mat-radio-button>
+            <mat-radio-button [value]="GENDER_TYPES?.FEMALE">Female</mat-radio-button>
+            <mat-error *ngIf="signupFormGroup?.controls?.gender?.dirty || signupFormGroup?.controls?.gender?.touched">
+              <span *ngIf="signupFormGroup?.controls?.gender?.errors?.required">
+                Must provide a<strong>&nbsp;Gender</strong>
+              </span>
+            </mat-error>
+          </mat-radio-group>
+        </div>
+        <div class="row">
+          <mat-form-field class="form-element signup-form-elements-width">
+            <mat-label>Enter your email</mat-label>
+            <input matInput placeholder="abc@xyz.com" formControlName="email">
+            <mat-error *ngIf="signupFormGroup?.controls?.email?.dirty || signupFormGroup?.controls?.email?.touched">
+              <span *ngIf="signupFormGroup?.controls?.email?.errors?.required">
+                Must provide a<strong>&nbsp;email</strong>
+              </span><br>
+              <span *ngIf="signupFormGroup?.controls?.email?.errors?.pattern">
+                Please provide a valid email
+              </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field class="signup-form-elements-width">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="1234" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error
+              *ngIf="signupFormGroup?.controls?.password?.dirty || signupFormGroup?.controls?.password?.touched">
+              <span *ngIf="signupFormGroup?.controls?.password?.errors?.required">
+                Must provide a<strong>&nbsp;password</strong>
+              </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field class="signup-form-elements-width">
+            <mat-label>Enter your address</mat-label>
+            <textarea matInput formControlName="address"></textarea>
+            <mat-error *ngIf="signupFormGroup?.controls?.address?.dirty || signupFormGroup?.controls?.address?.touched">
+              <span *ngIf="signupFormGroup?.controls?.address?.errors?.required">
+                Must provide a<strong>&nbsp;address</strong>
+              </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field class="signup-form-elements-width">
+            <mat-label>Select country</mat-label>
+            <mat-select formControlName="country">
+              <mat-option value="one" [value]="eachCountry" *ngFor="let eachCountry of COUNTRIES;">{{
+                eachCountry?.name }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="signupFormGroup?.controls?.country?.dirty || signupFormGroup?.controls?.country?.touched">
+              <span *ngIf="signupFormGroup?.controls?.country?.errors?.required">
+                Must provide a<strong>&nbsp;country</strong>
+              </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field class="form-element signup-form-elements-width">
+            <mat-label>Enter your state</mat-label>
+            <input matInput placeholder="Maharashtra" formControlName="state">
+            <mat-error *ngIf="signupFormGroup?.controls?.state?.dirty || signupFormGroup?.controls?.state?.touched">
+              <span *ngIf="signupFormGroup?.controls?.state?.errors?.required">
+                Must provide a<strong>&nbsp;state</strong>
+              </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field class="form-element signup-form-elements-width">
+            <mat-label>Enter your city</mat-label>
+            <input matInput placeholder="Pune" formControlName="city">
+            <mat-error *ngIf="signupFormGroup?.controls?.city?.dirty || signupFormGroup?.controls?.city?.touched">
+              <span *ngIf="signupFormGroup?.controls?.city?.errors?.required">
+                Must provide a<strong>&nbsp;city</strong>
+              </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field class="signup-form-elements-width">
+            <mat-label>Hobbies</mat-label>
+            <textarea matInput formControlName="hobby"></textarea>
+            <mat-error *ngIf="signupFormGroup?.controls?.state?.dirty || signupFormGroup?.controls?.state?.touched">
+              <span *ngIf="signupFormGroup?.controls?.state?.errors?.required">
+                Must provide a<strong>&nbsp;state</strong>
+              </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!-- <div class="row">
+          <mat-form-field class="signup-form-elements-width">
+            <mat-slide-toggle formControlName="isActive">Is Active</mat-slide-toggle>
+          </mat-form-field>
+        </div> -->
+        <div class="row">
+          <app-file-uploader [multiple]="false" [accept]="'image/x-png,image/gif,image/jpeg'"></app-file-uploader>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <button mat-button color="primary" (click)="signup()">Signup</button>
+            <button mat-button color="accent" (click)="cancel()">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

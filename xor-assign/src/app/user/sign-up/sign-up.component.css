@@ -1,0 +1,20 @@
+.sign-up-here {
+    color: blue;
+    font-weight: 700;
+    font-family: monospace;
+    font-size: large;
+    cursor: pointer;
+}
+
+.default-profile-pic {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+.inner-register-div {
+  width: 39%;
+  background-color: #c1c1c114;
+  border-radius: 12px;
+  margin-left: 435px;
+}

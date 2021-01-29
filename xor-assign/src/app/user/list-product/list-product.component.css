@@ -1,0 +1,9 @@
+.user-info-mat-card {
+  height: auto;
+  width: 206px;
+  position: relative;
+}
+
+.mat-list-base .mat-list-item.mat-list-item-with-avatar {
+  height: 25px;
+}

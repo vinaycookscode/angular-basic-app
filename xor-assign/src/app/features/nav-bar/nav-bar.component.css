@@ -1,0 +1,9 @@
+.spacer {
+    flex: 1 1 auto;
+}
+.mat-toolbar-multiple-rows {
+  min-height: 0px;
+}
+.mat-toolbar-row, .mat-toolbar-single-row {
+  height: 37px;
+}

@@ -1,0 +1,108 @@
+<app-nav-bar></app-nav-bar>
+<div class="container" style="position: absolute;top: 12%;">
+  <div class="row inner-register-div">
+    <div class="col-md-12 text-center">
+      <h2 style="color: rebeccapurple;"> {{ userInformation && userInformation[0]?.name | titlecase }}</h2>
+    </div>
+    <div class="col-md-12">
+      <form style="width: 100%; margin-left: 30px;" [formGroup]="userFormGroup">
+        <div class="row">
+          <mat-form-field class="form-element signup-form-elements-width">
+            <mat-label>Enter your Name</mat-label>
+            <input matInput placeholder="abc@xyz.com" formControlName="name">
+            <mat-error *ngIf="userFormGroup?.controls?.name?.dirty || userFormGroup?.controls?.name?.touched">
+              <span *ngIf="userFormGroup?.controls?.name?.errors?.required">
+                Must provide a<strong>&nbsp;name</strong>
+              </span><br>
+              <span *ngIf="userFormGroup?.controls?.name?.errors?.minlength">
+                Name should contain atleast <strong>&nbsp;2</strong>
+              </span><br>
+              <span *ngIf="userFormGroup?.controls?.name?.errors?.maxlength">
+                Name should contain <strong>&nbsp;max 50 characters</strong>
+              </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-radio-group aria-label="Select an option" formControlName="gender">
+            <mat-radio-button [value]="GENDER_TYPES?.MALE">Male</mat-radio-button>
+            <mat-radio-button [value]="GENDER_TYPES?.FEMALE">Female</mat-radio-button>
+            <mat-error *ngIf="userFormGroup?.controls?.gender?.dirty || userFormGroup?.controls?.gender?.touched">
+              <span *ngIf="userFormGroup?.controls?.gender?.errors?.required">
+                Must provide a<strong>&nbsp;Gender</strong>
+              </span>
+            </mat-error>
+          </mat-radio-group>
+        </div>
+        <div class="row">
+          <mat-form-field class="signup-form-elements-width">
+            <mat-label>Enter your address</mat-label>
+            <textarea matInput formControlName="address"></textarea>
+            <mat-error *ngIf="userFormGroup?.controls?.address?.dirty || userFormGroup?.controls?.address?.touched">
+              <span *ngIf="userFormGroup?.controls?.address?.errors?.required">
+                Must provide a<strong>&nbsp;address</strong>
+              </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field class="signup-form-elements-width">
+            <mat-label>Select country</mat-label>
+            <mat-select formControlName="country" [compareWith]="compareCountryObject">
+              <mat-option value="one" [value]="eachCountry" *ngFor="let eachCountry of COUNTRIES;">{{
+                eachCountry?.name }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="userFormGroup?.controls?.country?.dirty || userFormGroup?.controls?.country?.touched">
+              <span *ngIf="userFormGroup?.controls?.country?.errors?.required">
+                Must provide a<strong>&nbsp;country</strong>
+              </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field class="form-element signup-form-elements-width">
+            <mat-label>Enter your state</mat-label>
+            <input matInput placeholder="Maharashtra" formControlName="state">
+            <mat-error *ngIf="userFormGroup?.controls?.state?.dirty || userFormGroup?.controls?.state?.touched">
+              <span *ngIf="userFormGroup?.controls?.state?.errors?.required">
+                Must provide a<strong>&nbsp;state</strong>
+              </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field class="form-element signup-form-elements-width">
+            <mat-label>Enter your city</mat-label>
+            <input matInput placeholder="Pune" formControlName="city">
+            <mat-error *ngIf="userFormGroup?.controls?.city?.dirty || userFormGroup?.controls?.city?.touched">
+              <span *ngIf="userFormGroup?.controls?.city?.errors?.required">
+                Must provide a<strong>&nbsp;city</strong>
+              </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field class="signup-form-elements-width">
+            <mat-label>Hobbies</mat-label>
+            <textarea matInput formControlName="hobby"></textarea>
+            <mat-error *ngIf="userFormGroup?.controls?.state?.dirty || userFormGroup?.controls?.state?.touched">
+              <span *ngIf="userFormGroup?.controls?.state?.errors?.required">
+                Must provide a<strong>&nbsp;state</strong>
+              </span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-slide-toggle formControlName="isActive">Enable/Disable user</mat-slide-toggle>
+        </div>
+        <div class="row">
+          <div class="col-md-6" style="margin-left: 92px;">
+            <button mat-button color="primary" (click)="editUser()" [disabled]="userFormGroup?.invalid">Edit</button>
+            <button mat-button color="accent" (click)="cancel()">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

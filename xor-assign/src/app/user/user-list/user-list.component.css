@@ -1,0 +1,19 @@
+.mat-list-icon {
+  color: #f34636
+}
+
+.name-hover:hover {
+  cursor: pointer;
+  color: #f34636
+}
+
+.mat-item-background-color {
+  background-color: #c1c1c114;
+}
+
+.user-info-mat-card {
+  height: auto;
+  width: 300px;
+  position: relative;
+}
+
